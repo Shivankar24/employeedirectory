@@ -38,6 +38,12 @@ public class EmployeeController {
         return  new ResponseEntity(employeeService.findByEmployeeIdIn(employeeIds),HttpStatus.OK);
     }
 
+    @GetMapping(value="getEmployeeByDeptAndAddress/address={address}/dept={dept}", consumes = "application/json")
+    public ResponseEntity<List<Employee>> getEmployeeByEmployeeIds(@PathVariable("address")String address,
+                                                                   @PathVariable("dept")String dept) throws Exception{
+        return  new ResponseEntity(employeeService.findByDepartmentAndAddress(dept,address),HttpStatus.OK);
+    }
+
     @PutMapping("updateEmployee")
     public ResponseEntity<Employee> updateEmployeeById(@RequestBody Employee employee) throws Exception{
         return  new ResponseEntity(employeeService.updateEmployee(employee),HttpStatus.OK);

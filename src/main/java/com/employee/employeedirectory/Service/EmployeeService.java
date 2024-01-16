@@ -16,4 +16,6 @@ public interface EmployeeService {
     List<Employee> findByIdIn(List<Long> employeeIds);
 
     List<Employee> findByEmployeeIdIn(List<String> employeeIds);
+
+    List<Employee> findByDepartmentAndAddress(String department, String address);
 }

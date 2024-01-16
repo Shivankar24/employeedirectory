@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -56,6 +55,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> findByEmployeeIdIn(List<String> employeeIds){
         List<Employee> resultList = employeeRepository.findByEmployeeIdIn(employeeIds);
         return resultList;
+    }
+
+    @Override
+    public List<Employee> findByDepartmentAndAddress(String department, String address){
+        List<Employee> resultList = employeeRepository.findByDepartmentAndAddress(department,address);
+        return  resultList;
     }
 
 }
