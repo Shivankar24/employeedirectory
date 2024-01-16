@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("employee")
 @RestController
 @CrossOrigin
@@ -26,6 +28,16 @@ public class EmployeeController {
         return  new ResponseEntity(employeeService.findByEmployeeId(employeeId),HttpStatus.OK);
     }
 
+    @GetMapping(value="getEmployeeById", consumes = "application/json")
+    public ResponseEntity<List<Employee>> getEmployeeByIds(@RequestBody List<Long> Ids) throws Exception{
+        return  new ResponseEntity(employeeService.findByIdIn(Ids),HttpStatus.OK);
+    }
+
+    @GetMapping(value="getEmployeeByEmployeeId", consumes = "application/json")
+    public ResponseEntity<List<Employee>> getEmployeeByEmployeeIds(@RequestBody List<String> employeeIds) throws Exception{
+        return  new ResponseEntity(employeeService.findByEmployeeIdIn(employeeIds),HttpStatus.OK);
+    }
+
     @PutMapping("updateEmployee")
     public ResponseEntity<Employee> updateEmployeeById(@RequestBody Employee employee) throws Exception{
         return  new ResponseEntity(employeeService.updateEmployee(employee),HttpStatus.OK);
@@ -36,4 +48,6 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
         return  new ResponseEntity("Employee Deleted!",HttpStatus.OK);
     }
+
+
 }
