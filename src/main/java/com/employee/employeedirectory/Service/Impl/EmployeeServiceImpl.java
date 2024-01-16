@@ -48,20 +48,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findByIdIn(List<Long> employeeIds){
-        employeeIds = new ArrayList<>();
-        employeeIds.add(3l);
-        employeeIds.add(4l);
-        employeeIds.add(5l);
         List<Employee> resultList = employeeRepository.findByIdIn(employeeIds);
         return resultList;
     }
 
     @Override
     public List<Employee> findByEmployeeIdIn(List<String> employeeIds){
-        employeeIds = new ArrayList<>();
-        employeeIds.add("456");
-        employeeIds.add("123");
-        employeeIds.add("654");
         List<Employee> resultList = employeeRepository.findByEmployeeIdIn(employeeIds);
         return resultList;
     }
