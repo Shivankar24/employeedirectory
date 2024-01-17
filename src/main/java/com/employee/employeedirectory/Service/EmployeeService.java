@@ -18,4 +18,6 @@ public interface EmployeeService {
     List<Employee> findByEmployeeIdIn(List<String> employeeIds);
 
     List<Employee> findByDepartmentAndAddress(String department, String address);
+
+    List<Employee> getAllEmployeesByPage(String dept,int pageNumber, int limit, String sortBy);
 }

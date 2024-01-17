@@ -54,6 +54,14 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
         return  new ResponseEntity("Employee Deleted!",HttpStatus.OK);
     }
+    @GetMapping("getAllEmployeesByPage/dept={dept}/page={pageNumber}/limit={limit}/sortBy={sortBy}")
+    public ResponseEntity<Employee> getAllEmployeesByPage(@PathVariable("dept") String dept,
+                                                          @PathVariable("pageNumber") int pageNumber,
+                                                          @PathVariable("limit") int limit,
+                                                          @PathVariable("sortBy") String sortBy) throws Exception{
+        return  new ResponseEntity(employeeService.getAllEmployeesByPage(dept,pageNumber,limit,sortBy),HttpStatus.OK);
+    }
+
 
 
 }
